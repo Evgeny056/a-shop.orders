@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   zookeeper:
-    image: zookeeper:3.7.0
+    image: confluentinc/cp-zookeeper:latest
     container_name: zookeeper
     ports:
       - "2181:2181"
@@ -16,7 +16,7 @@ services:
       - kafka-net
 
   kafka1:
-    image: confluentinc/cp-kafka:6.2.1
+    image: confluentinc/cp-kafka:latest
     container_name: kafka1
     environment:
       KAFKA_BROKER_ID: 1
