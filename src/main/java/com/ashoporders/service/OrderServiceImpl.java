@@ -3,7 +3,6 @@ package com.ashoporders.service;
 import com.ashoporders.mapper.OrderMapper;
 import com.ashoporders.messaging.producer.MessageProducer;
 import com.ashoporders.model.dto.CreateOrderRequestDto;
-import com.ashoporders.model.entity.Order;
 import com.ashoporders.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,9 +19,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @Transactional
     public void registerOrder(CreateOrderRequestDto createOrderRequestDto) {
-        Order order = orderMapper.toEntity(createOrderRequestDto);
-        Order savedOrder = orderRepository.save(order);
-        CreateOrderRequestDto savedOrderRequestDto = orderMapper.toDto(savedOrder); //дописать dto для kafka
-        messageProducer.sendMessage(savedOrderRequestDto);
+        orderRepository.save(orderMapper.toEntity(createOrderRequestDto));
+        messageProducer.sendMessage(createOrderRequestDto);
     }
 }

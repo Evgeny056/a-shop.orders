@@ -22,9 +22,9 @@ public class NewOrdersProducer implements MessageProducer<CreateOrderRequestDto>
     private String newOrdersTopic;
 
     @Override
-    public void sendMessage(CreateOrderRequestDto message) {
+    public void sendMessage(CreateOrderRequestDto dto) {
         CompletableFuture<SendResult<String, CreateOrderRequestDto>> future = kafkaTemplate.send(
-                newOrdersTopic, message
+                newOrdersTopic, dto
         );
         future.whenComplete((result, ex) -> {
             if (ex == null) {

@@ -8,7 +8,7 @@ spring:
     password: postgres
 
   kafka:
-    bootstrap-servers: kafka1:9092
+    bootstrap-servers: localhost:29092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
@@ -19,3 +19,5 @@ spring:
 kafka:
   topics:
       new_orders: new_orders
+  mapping:
+      new_orders: createOrderRequestDto:com.ashoporders.model.dto.CreateOrderRequestDto
