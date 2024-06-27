@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/a-shop
+    username: postgres
+    password: postgres
+
+  kafka:
+    bootstrap-servers: kafka1:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.add.type.header: false
+        spring.json.type.mapping: ${kafka.topics.new_orders}
+
+kafka:
+  topics:
+      new_orders: new_orders
