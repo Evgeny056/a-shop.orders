@@ -9,8 +9,8 @@ import org.springframework.kafka.config.TopicBuilder;
 @Configuration
 public class KafkaTopicConfig {
 
-    @Value("${kafka.topics.new_orders}")
-    private String newOrdersTopic;
+    //@Value("${kafka.topics.new_orders}")
+    private String newOrdersTopic = "new_orders";
 
     @Bean
     public NewTopic createOrderTopic() {

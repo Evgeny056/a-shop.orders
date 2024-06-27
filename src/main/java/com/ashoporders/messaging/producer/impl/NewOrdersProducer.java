@@ -18,8 +18,8 @@ public class NewOrdersProducer implements MessageProducer<CreateOrderRequestDto>
 
     private final KafkaTemplate<String,CreateOrderRequestDto> kafkaTemplate;
 
-    @Value("${kafka.topics.new_orders}")
-    private String newOrdersTopic;
+    //@Value("${kafka.topics.new_orders}")
+    private String newOrdersTopic = "new_orders";
 
     @Override
     public void sendMessage(CreateOrderRequestDto dto) {

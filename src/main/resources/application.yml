@@ -14,10 +14,7 @@ spring:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       properties:
         spring.json.add.type.header: false
-        spring.json.type.mapping: ${kafka.topics.new_orders}
 
 kafka:
   topics:
       new_orders: new_orders
-  mapping:
-      new_orders: createOrderRequestDto:com.ashoporders.model.dto.CreateOrderRequestDto
