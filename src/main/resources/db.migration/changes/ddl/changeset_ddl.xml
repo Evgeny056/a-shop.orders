@@ -4,8 +4,12 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
 
 
-    <changeSet id="init_table" author="e.shurupov" runAlways="false" runOnChange="true">
-        <comment>Создание таблицы базы данных</comment>
+    <changeSet id="init_table_orders" author="e.shurupov" runAlways="false" runOnChange="true">
+        <comment>Создание таблицы заказы</comment>
         <sqlFile path="/sql.init/create_table_orders.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+    <changeSet id="init_table_users" author="e.shurupov" runAlways="false" runOnChange="true">
+        <comment>Создание таблицы пользователя</comment>
+        <sqlFile path="/sql.init/create_table_users.sql" relativeToChangelogFile="true"/>
     </changeSet>
 </databaseChangeLog>
