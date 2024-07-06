@@ -10,14 +10,15 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class ConsumerOrders implements MessageProducer<CreateOrderRequestDto> {
+public class ProducerOrders implements MessageProducer<CreateOrderRequestDto> {
 
     private String newTopicOrders = "new_orders";
 
     private final KafkaTemplate<String, Object> kafkaTemplate;
 
     public void sendMessage(CreateOrderRequestDto createOrderRequestDto) {
-            log.info("Sending message to {}: {}", newTopicOrders, createOrderRequestDto);
-            kafkaTemplate.send(newTopicOrders, createOrderRequestDto);
+        String key = String.valueOf(createOrderRequestDto.hashCode());
+        log.info("Sending message to {}: {} with key {", newTopicOrders, createOrderRequestDto, key);
+            kafkaTemplate.send(newTopicOrders, key, createOrderRequestDto);
     }
 }

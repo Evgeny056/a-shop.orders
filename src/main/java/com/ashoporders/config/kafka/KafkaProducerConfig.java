@@ -30,5 +30,4 @@ public class KafkaProducerConfig {
     public KafkaTemplate<String, Object> kafkaTemplate(ObjectMapper objectMapper) {
         return new KafkaTemplate<>(producerFactory(objectMapper));
     }
-
 }
